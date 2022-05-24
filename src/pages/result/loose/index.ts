@@ -3,7 +3,9 @@ import { state } from "../../../state"
 
 function counterWins() {
     const currentState = state.getState()
-    const cpuContador = currentState.histoy.filter((e) => {
+
+
+    const cpuContador = currentState.histoy.filter((e: number) => {
         let contador = 0
         if (e == 0) {
             contador++
@@ -11,7 +13,7 @@ function counterWins() {
         return contador;
     })
 
-    const myContador = currentState.histoy.filter((e) => {
+    const myContador = currentState.histoy.filter((e: number) => {
         let contador = 0
         if (e == 1) {
             contador++
@@ -127,3 +129,4 @@ export function initLoose(params) {
     })
     return div;
 }
+

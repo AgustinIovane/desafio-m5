@@ -26,3 +26,4 @@ function initApp(param) {
     initApp(root);
     console.log(state.getState());
 })()
+
