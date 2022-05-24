@@ -52,26 +52,29 @@ const state = {
         this.whoWins({ myPlay, computerPlay })
     },
 
-    whoWins(myPlay: Jugada, computerPlay: Jugada) {
+    whoWins(jugada: Jugar) {
         const data = this.getState()
 
-        const ganeConTijeras = myPlay == "tijeras" && computerPlay == "papel"
-        const ganeConPiedra = myPlay == "piedra" && computerPlay == "tijeras"
-        const ganeConPapel = myPlay == "papel" && computerPlay == "piedra"
+        const ganeConTijeras = jugada.myPlay == "tijeras" && jugada.computerPlay == "papel"
+        const ganeConPiedra = jugada.myPlay == "piedra" && jugada.computerPlay == "tijeras"
+        const ganeConPapel = jugada.myPlay == "papel" && jugada.computerPlay == "piedra"
         const gane = [ganeConPiedra, ganeConTijeras, ganeConPapel].includes(true);
 
-        const perdiConTijeras = myPlay == "tijeras" && computerPlay == "piedra"
-        const perdiConPiedra = myPlay == "piedra" && computerPlay == "papel"
-        const perdiConPapel = myPlay == "papel" && computerPlay == "tijeras"
+        const perdiConTijeras = jugada.myPlay == "tijeras" && jugada.computerPlay == "piedra"
+        const perdiConPiedra = jugada.myPlay == "piedra" && jugada.computerPlay == "papel"
+        const perdiConPapel = jugada.myPlay == "papel" && jugada.computerPlay == "tijeras"
         const perdi = [perdiConPiedra, perdiConPapel, perdiConTijeras].includes(true);
 
         if (gane == true) {
             data.histoy.push(1)
             this.setState(data)
+            console.log(this.getState("gane"));
+
         }
         else if (perdi == true) {
             data.histoy.push(0)
             this.setState(data)
+            console.log(this.getState("perdi"));
         }
     },
 };
